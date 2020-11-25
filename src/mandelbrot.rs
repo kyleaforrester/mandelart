@@ -1,7 +1,7 @@
 use std::cmp;
 use std::convert::TryInto;
 
-const MAX_ATTEMPTS: u32 = 4000;
+const MAX_ATTEMPTS: u32 = 8000;
 
 pub fn color_point(x: f64, y: f64) -> (u8, u8, u8) {
     let time = escape_time(x, y);
@@ -37,13 +37,15 @@ fn colorize(e_time: u32) -> (u8, u8, u8) {
     let red = cmp::min(half_time, 255);
     let green = if half_time < 256 {
         0
+    } else if half_time >= 512 {
+        255
     } else {
-        cmp::min(half_time, 255)
+        half_time - 256
     };
     let blue = if half_time < 512 {
         0
     } else {
-        cmp::min(half_time, 255)
+        cmp::min(half_time - 512, 255)
     };
     (red.try_into().unwrap(), green.try_into().unwrap(), blue.try_into().unwrap())
 }
