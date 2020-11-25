@@ -1,2 +1,2 @@
-mandelart -x -0.754 -y 0.05 -r 0.001
+mandelart -x -0.754 -y 0.05 -r 0.002
 mandelart -x -0.754 -y 0.05 -r 0.000001
