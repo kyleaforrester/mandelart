@@ -33,8 +33,8 @@ fn main() {
 fn parse_args() -> (f64, f64, f64, u32, u32, Algorithm, f64, u32) {
     let mut state = ArgState::Initial;
     let mut focus_x = -1f64;
-    let mut focus_y = 0.005;
-    let mut range = 0.00005;
+    let mut focus_y = 0f64;
+    let mut range = 4f64;
     let mut width = 1920;
     let mut height = 1080;
     let mut algorithm = Algorithm::Mandelbrot;
@@ -87,9 +87,9 @@ fn help_args() {
     println!("-x | --x_coor         : X coordinate of the focus point of the media");
     println!("                        Default: -1");
     println!("-y | --y_coor         : Y coordinate of the focus point of the media");
-    println!("                        Default: 0.005");
+    println!("                        Default: 0");
     println!("-r | --range          : Different between the leftmost pixel and the rightmost pixel");
-    println!("                        Default: 0.00005");
+    println!("                        Default: 4");
     println!("-w | --width          : Number of pixels wide of the output media");
     println!("                        Default: 1920");
     println!("-ht | --height        : Number of pixels tall of the output media");
@@ -103,10 +103,10 @@ fn help_args() {
     println!("                        Set -f to 1 for a single image, or >= 2 for a video");
     println!("                        Default: 1");
     println!("-h | --help           : See help output.  Trumps other argument flags");
-    println!("\nHere is an example execution of mandelart to generate a single image of mandelbrot set using the default values:");
-    println!("mandelart -x -1 -y 0.005 -r 0.00005 -w 1920 -ht 1080 -a mandelbrot -f 1");
+    println!("\nHere is an example execution of mandelart to generate a single image of mandelbrot set:");
+    println!("mandelart -x -0.754 -y 0.05 -r 0.001 -w 1920 -ht 1080 -a mandelbrot -f 1");
     println!("Here is an example execution of mandelart to generate a 60 second video of mandelbrot set at 60 fps:");
-    println!("mandelart -x -1 -y 0.005 -r 0.00005 -w 1920 -ht 1080 -a mandelbrot -z 0.99 -f 3600");
+    println!("mandelart -x -0.754 -y 0.05 -r 0.001 -w 1920 -ht 1080 -a mandelbrot -z 0.99 -f 3600");
 
     std::process::exit(0);
 }
